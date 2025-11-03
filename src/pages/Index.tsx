@@ -10,11 +10,33 @@
  */
 
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import aryanPhoto from "@/assets/aryan-photo.png";
 
 const Index = () => {
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    const target = imgRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio < 0.7) {
+          target.classList.add("is-scaled");
+        } else {
+          target.classList.remove("is-scaled");
+        }
+      },
+      { threshold: [0, 0.5, 1] }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -54,7 +76,8 @@ const Index = () => {
                 <img
                   src={aryanPhoto}
                   alt="Aryan's portrait"
-                  className="w-full h-auto rounded-2xl shadow-2xl hover-lift"
+                  className="w-full h-auto rounded-2xl shadow-2xl hover-lift scale-on-scroll"
+                  ref={imgRef}
                 />
               </div>
             </div>

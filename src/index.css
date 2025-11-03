@@ -101,6 +101,17 @@ All colors MUST be HSL.
     transform: translateY(-4px);
   }
 
+  /* Scale on scroll utilities */
+  .scale-on-scroll {
+    transition: var(--transition-smooth);
+    transform-origin: center;
+  }
+
+  .is-scaled {
+    transform: scale(0.5);
+    transition-delay: 0.1ms;
+  }
+
   /* Card hover effect */
   .card-hover {
     transition: var(--transition-smooth);
@@ -108,5 +119,16 @@ All colors MUST be HSL.
 
   .card-hover:hover {
     box-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.2);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0.5; /* Fades out too */
   }
 }
