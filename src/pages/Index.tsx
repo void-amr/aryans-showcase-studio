@@ -40,7 +40,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 right-0 p-6 z-50">
+      <nav className="fixed top-0 right-0 p-6 z-50 flex items-center gap-4">
+        <Link 
+          to="/blogs"
+          className="text-foreground hover:text-muted-foreground transition-colors font-medium"
+        >
+          Blogs
+        </Link>
         <Link to="/connect">
           <Button 
             variant="outline" 
