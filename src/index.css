@@ -89,6 +89,11 @@ All colors MUST be HSL.
     font-family: 'Brush Script MT', cursive;
     font-style: italic;
   }
+
+  /* Serif font for blog titles - editorial/Medium style */
+  .font-serif {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
 }
 
 @layer utilities {
